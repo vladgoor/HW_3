@@ -5,15 +5,15 @@ import java.util.Random;
 public class Main {
     public static void main(String[] args) {
 
-        int taskNumber = 4; // Номер задания которое хотим выполнить
-        int numOfArray = 10; // Кол-во элементов массива
+        int taskNumber = 5; // Номер задания которое хотим выполнить
+        int numOfArray = 15; // Кол-во элементов массива
         int[] arr = new int[numOfArray]; // Инициализация массива
         System.out.println("Массив " + numOfArray  + " элементов :" );
 
 
         for(int count = 0; count < numOfArray; count++){ // Запись в каждый элемент массива рандомного числа
             Random rand = new Random();
-            arr [count] = rand.nextInt(-100, 100) ; // Знач от -100 до 100
+            arr [count] = rand.nextInt(-1000,1000 ) ; // Знач от -100 до 100
             System.out.print(arr[count] + " "); // Вывод всех эллементов массива
         }
         System.out.println(" ");
@@ -185,12 +185,49 @@ public class Main {
             break;
 //=============================Task 3=========================================
             case (5):
+                int gradNumTask5;
+                boolean numIsNiggative = false;
+                for(int count = 0; count < numOfArray; count++){
+                    gradNumTask5 = 0;
+                    if(arr[count] <= 9 && arr[count] >= -9){
+                        System.out.println(arr[count]);
+                    } else {
+                        if(arr[count] < 0){ // проверка на отрицательный элемент массива
+                            arr[count] *= -1;
+                            numIsNiggative = true;
+                        }
+                        int countNum = arr[count];
+                        while (countNum != 0){ // Определяем кол-во цифр в числе
+                            countNum /= 10;
+                            gradNumTask5++;
+                        }
+                        int rank = gradNumTask5;
+                        int highRank = 1;
+                        int lowRank = 1;
 
+                        while (rank > 1){ // Подсчет макс разряда
+                            highRank *= 10;
+                            rank--;
+                        }
 
+                        for(int j = 0; j < gradNumTask5; j++){
+                            if ((arr[count] / highRank) % 10 == (arr[count] / lowRank) % 10){
+                                highRank /= 10;
+                                lowRank *= 10;
+                            } else break;
+                            if(j + 1 == gradNumTask5) {
+                                if(numIsNiggative == true){
+                                    System.out.println(arr[count] *= -1);
+                                    numIsNiggative = false;
+                                }   else System.out.println(arr[count]);
 
+                            }
+                        }
+                        numIsNiggative = false;
+                    }
+                }
             break;
         }
-
     }
 
 }
