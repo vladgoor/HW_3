@@ -4,7 +4,8 @@ import java.util.Random;
 
 public class Main {
     public static void main(String[] args) {
-        int taskNumber = 2; // Номер задания
+
+        int taskNumber = 4; // Номер задания которое хотим выполнить
         int numOfArray = 10; // Кол-во элементов массива
         int[] arr = new int[numOfArray]; // Инициализация массива
         System.out.println("Массив " + numOfArray  + " элементов :" );
@@ -75,7 +76,121 @@ public class Main {
                     System.out.print(arrNotEvenNum[count] + " ");
                 }
             break;
+
+//=============================Task 3=========================================
+            case (3):
+                int minGradNum = 0;
+
+                int maxGradNum = 0;
+
+                int curentGradNum = 0;
+                int[] mirrotArr = new int[numOfArray]; // Создание дубликата массива
+                for (int count = 0; count < numOfArray; count++){ // Определяем размер массива для чет и не чет чисел
+                    if (arr[count] < 0) arr[count] *= -1;
+                    mirrotArr[count] = arr[count];
+                    while (mirrotArr[count] > 0){
+                        mirrotArr[count] /= 10;
+                        curentGradNum++;
+                        if (curentGradNum > maxGradNum){
+                            maxGradNum++;
+
+                        }
+                        if (curentGradNum < maxGradNum && curentGradNum > minGradNum){
+                            minGradNum++;
+                        }
+                    }
+                    curentGradNum = 0;
+                }
+                int gradNum = 1;
+                for(int count = 0; maxGradNum  > count; count++){ //получаем степень макс числа
+                    gradNum *= 10;
+                }
+                gradNum =- 1;
+                System.out.println("maxGradNum = " + maxGradNum + " min = " + minGradNum);
+                System.out.print("Самые длинные числа : ");
+                for (int count = 0; count < numOfArray; count++){
+                    if(arr[count] / gradNum > 0 ){
+                        System.out.print(arr[count] + " ");
+                    }
+                }
+
+                System.out.println(" ");
+
+                gradNum = 1;
+                for(int count = 0; (minGradNum - 1) > count; count++){ //получаем степень макс числа
+                    gradNum *= 10;
+                }
+                System.out.print("Самые короткие числа : ");
+                for (int count = 0; count < numOfArray; count++){
+                    if(arr[count] / gradNum > 0 && arr[count] > gradNum){
+                        System.out.print(arr[count] + " ");
+                    }
+                }
+
+
+
+
+
+
+
+
+
+
+
+
+//                    int gradNum = 1;
+//                for(int count = 0; (maxGradNum - 1) > count; count++){ //получаем степень макс числа
+//                    gradNum *= 10;
+//                }
+//                System.out.println("Самые длинные числа : ");
+//                for (int count = 0; count < numOfArray; count++){
+//                    if(arr[count] / (gradNum) != 0){
+//                        System.out.print(" " + arr[count]);
+//                    }
+//                }
+//                System.out.println(" ");
+//                gradNum = 1;
+//                for(int count = 0; (minGradNum - 1) > count; count++){ //получаем степень макс числа
+//                    gradNum *= 10;
+//                }
+//                System.out.print("Самые короткие числа : ");
+//                for (int count = 0; count < numOfArray; count++){
+//                    if(arr[count] / (gradNum) != 0){
+//                        System.out.print("  " + arr[count]);
+//                    }
+//                }
+
+
+            break;
+//=============================Task 3=========================================
+            case (4):
+                int[] duplicateArr = new int[numOfArray + 1];
+                boolean kombo = false;
+                for(int count = 0; count < numOfArray; count++){
+                    duplicateArr[count] = arr[count];
+                }
+
+                for(int count = 0; count < numOfArray; count++) {
+                    if (arr[count] < duplicateArr[count + 1]) {
+                        System.out.print(arr[count] + " ");
+                        kombo = true;
+                        continue;
+                    }
+                    if(kombo == true){
+                        System.out.print(arr[count] + "   ");
+                        kombo = false;
+                        continue;
+                    }
+                }
+            break;
+//=============================Task 3=========================================
+            case (5):
+
+
+
+            break;
         }
+
     }
 
 }
